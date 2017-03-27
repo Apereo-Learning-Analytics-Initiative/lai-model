@@ -1,8 +1,6 @@
-/**
- * 
- */
 package unicon.matthews.oneroster;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -10,20 +8,19 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-/**
- * @author ggilbert
- *
- */
-@JsonDeserialize(builder = Class.Builder.class)
-public final class Class {
+@JsonDeserialize(builder = Course.Builder.class)
+public class Course {
   private String sourcedId;
   private Status status;
   private Map<String, String> metadata;
   private String title;
-  private Course course;
+  private String schoolYear;
+  private String courseCode;
+  private String grade;
+  private List<String> subjects;
   
-  private Class() {}
-  
+  private Course() {}
+
   public String getSourcedId() {
     return sourcedId;
   }
@@ -39,11 +36,23 @@ public final class Class {
   public String getTitle() {
     return title;
   }
-  
-  public Course getCourse() {
-    return course;
+
+  public String getSchoolYear() {
+    return schoolYear;
   }
 
+  public String getCourseCode() {
+    return courseCode;
+  }
+
+  public String getGrade() {
+    return grade;
+  }
+
+  public List<String> getSubjects() {
+    return subjects;
+  }
+  
   @Override
   public String toString() {
     return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
@@ -53,10 +62,13 @@ public final class Class {
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((course == null) ? 0 : course.hashCode());
+    result = prime * result + ((courseCode == null) ? 0 : courseCode.hashCode());
+    result = prime * result + ((grade == null) ? 0 : grade.hashCode());
     result = prime * result + ((metadata == null) ? 0 : metadata.hashCode());
+    result = prime * result + ((schoolYear == null) ? 0 : schoolYear.hashCode());
     result = prime * result + ((sourcedId == null) ? 0 : sourcedId.hashCode());
     result = prime * result + ((status == null) ? 0 : status.hashCode());
+    result = prime * result + ((subjects == null) ? 0 : subjects.hashCode());
     result = prime * result + ((title == null) ? 0 : title.hashCode());
     return result;
   }
@@ -69,16 +81,26 @@ public final class Class {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Class other = (Class) obj;
-    if (course == null) {
-      if (other.course != null)
+    Course other = (Course) obj;
+    if (courseCode == null) {
+      if (other.courseCode != null)
         return false;
-    } else if (!course.equals(other.course))
+    } else if (!courseCode.equals(other.courseCode))
+      return false;
+    if (grade == null) {
+      if (other.grade != null)
+        return false;
+    } else if (!grade.equals(other.grade))
       return false;
     if (metadata == null) {
       if (other.metadata != null)
         return false;
     } else if (!metadata.equals(other.metadata))
+      return false;
+    if (schoolYear == null) {
+      if (other.schoolYear != null)
+        return false;
+    } else if (!schoolYear.equals(other.schoolYear))
       return false;
     if (sourcedId == null) {
       if (other.sourcedId != null)
@@ -86,6 +108,11 @@ public final class Class {
     } else if (!sourcedId.equals(other.sourcedId))
       return false;
     if (status != other.status)
+      return false;
+    if (subjects == null) {
+      if (other.subjects != null)
+        return false;
+    } else if (!subjects.equals(other.subjects))
       return false;
     if (title == null) {
       if (other.title != null)
@@ -96,35 +123,52 @@ public final class Class {
   }
 
   public static class Builder {
-    private Class _class = new Class();
+    private Course _course = new Course();
     
     public Builder withSourcedId(String sourcedId) {
-      _class.sourcedId = sourcedId;
+      _course.sourcedId = sourcedId;
       return this;
     }
     
     public Builder withStatus(Status status) {
-      _class.status = status;
+      _course.status = status;
       return this;
     }
     
     public Builder withMetadata(Map<String,String> metadata) {
-      _class.metadata = metadata;
+      _course.metadata = metadata;
       return this;
     }
     
     public Builder withTitle(String title) {
-      _class.title = title;
+      _course.title = title;
       return this;
     }
     
-    public Builder withCourse(Course course) {
-      _class.course = course;
+    public Builder withSchoolYear(String schoolYear) {
+      _course.schoolYear = schoolYear;
       return this;
     }
     
-    public Class build() {
-      return _class;
+    public Builder withCourseCode(String courseCode) {
+      _course.courseCode = courseCode;
+      return this;
+    }
+    
+    public Builder withGrade(String grade) {
+      _course.grade = grade;
+      return this;
+    }
+
+    public Builder withSubjects(List<String> subjects) {
+      _course.subjects = subjects;
+      return this;
+    }
+    
+    public Course build() {
+      return _course;
     }
   }
+
+
 }
