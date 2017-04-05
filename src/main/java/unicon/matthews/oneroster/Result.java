@@ -1,6 +1,7 @@
 package unicon.matthews.oneroster;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -16,7 +17,8 @@ public class Result {
   private String resultstatus;
   private LocalDateTime date;
   private String comment;
-  
+  private Map<String, String> metadata;
+
   private Result() {}
 
   public String getSourcedId() {
@@ -55,6 +57,10 @@ public class Result {
     return comment;
   }
 
+  public Map<String, String> getMetadata() {
+    return metadata;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -63,6 +69,7 @@ public class Result {
     result = prime * result + ((date == null) ? 0 : date.hashCode());
     result = prime * result + ((dateLastModified == null) ? 0 : dateLastModified.hashCode());
     result = prime * result + ((lineitem == null) ? 0 : lineitem.hashCode());
+    result = prime * result + ((metadata == null) ? 0 : metadata.hashCode());
     result = prime * result + ((resultstatus == null) ? 0 : resultstatus.hashCode());
     result = prime * result + ((score == null) ? 0 : score.hashCode());
     result = prime * result + ((sourcedId == null) ? 0 : sourcedId.hashCode());
@@ -99,6 +106,11 @@ public class Result {
       if (other.lineitem != null)
         return false;
     } else if (!lineitem.equals(other.lineitem))
+      return false;
+    if (metadata == null) {
+      if (other.metadata != null)
+        return false;
+    } else if (!metadata.equals(other.metadata))
       return false;
     if (resultstatus == null) {
       if (other.resultstatus != null)
@@ -142,7 +154,12 @@ public class Result {
       _result.dateLastModified = dateLastModified;
       return this;
     }
-    
+
+    public Builder withMetadata(Map<String,String> metadata) {
+      _result.metadata = metadata;
+      return this;
+    }
+
     public Builder withLineitem(Link lineitem) {
       _result.lineitem = lineitem;
       return this;
