@@ -152,7 +152,7 @@ public class AcademicSession {
       return this;
     }
 
-    public Builder withStatus(AcademicSessionType academicSessionType) {
+    public Builder withAcademicSessionType(AcademicSessionType academicSessionType) {
       _academicSession.academicSessionType = academicSessionType;
       return this;
     }
