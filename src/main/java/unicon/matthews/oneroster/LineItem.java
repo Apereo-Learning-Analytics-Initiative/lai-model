@@ -27,7 +27,7 @@ public class LineItem {
   private LocalDateTime dueDate;
   
   @JsonProperty("class")
-  private Class klass;
+  private Link klass;
   
   private LineItemCategory category;
   
@@ -61,7 +61,7 @@ public class LineItem {
     return dueDate;
   }
 
-  public Class getKlass() {
+  public Link getKlass() {
     return klass;
   }
 
@@ -187,7 +187,7 @@ public class LineItem {
       return this;
     }
     
-    public Builder withClass(Class klass) {
+    public Builder withClass(Link klass) {
       _lineItem.klass = klass;
       return this;
     }

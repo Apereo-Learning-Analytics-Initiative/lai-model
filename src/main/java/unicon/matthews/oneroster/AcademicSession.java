@@ -7,22 +7,14 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(builder = AcademicSession.Builder.class)
-public class AcademicSession {
+public class AcademicSession extends BaseClass {
 
-  private String sourcedId;
-  private Status status;
-  private LocalDateTime dateLastModified;
-  private Map<String, String> metadata;
   private String title;
   private LocalDate startDate;
   private LocalDate endDate;
   private AcademicSessionType academicSessionType;
 
   private AcademicSession() {
-  }
-
-  public String getSourcedId() {
-    return sourcedId;
   }
 
   public String getTitle() {
@@ -37,20 +29,8 @@ public class AcademicSession {
     return endDate;
   }
 
-  public Map<String, String> getMetadata() {
-    return metadata;
-  }
-
   public AcademicSessionType getAcademicSessionType() {
     return academicSessionType;
-  }
-
-  public Status getStatus() {
-    return status;
-  }
-
-  public LocalDateTime getDateLastModified() {
-    return dateLastModified;
   }
 
   @Override

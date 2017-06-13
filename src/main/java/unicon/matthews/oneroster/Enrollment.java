@@ -23,12 +23,12 @@ public final class Enrollment {
   private Map<String, String> metadata;
   private Role role;
   private boolean primary;
-  private User user;
+  private Link user;
   
   private Enrollment() {}
   
   @JsonProperty("class")
-  private Class klass;
+  private Link klass;
 
   public String getSourcedId() {
     return sourcedId;
@@ -50,11 +50,11 @@ public final class Enrollment {
     return primary;
   }
 
-  public User getUser() {
+  public Link getUser() {
     return user;
   }
 
-  public Class getKlass() {
+  public Link getKlass() {
     return klass;
   }
 
@@ -143,13 +143,13 @@ public final class Enrollment {
       return this;
     }
     
-    public Builder withUser(User user) {
+    public Builder withUser(Link user) {
       _enrollment.user = user;
       return this;
     }
     
     @JsonProperty("class")
-    public Builder withKlass(Class klass) {
+    public Builder withKlass(Link klass) {
       _enrollment.klass = klass;
       return this;
     }
