@@ -1,9 +1,7 @@
 package org.apereo.model.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-
+import java.time.Instant;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -17,10 +15,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 public class ClassMapping implements Serializable {
 
   private static final long serialVersionUID = 1L;
-  
+
   private String classSourcedId;
   private String classExternalId;
-  private LocalDateTime dateLastModified;
+  private Instant dateLastModified;
   private String tenantId;
   private String organizationId;
   
@@ -34,7 +32,7 @@ public class ClassMapping implements Serializable {
     return classExternalId;
   }
   
-  public LocalDateTime getDateLastModified() {
+  public Instant getDateLastModified() {
     return dateLastModified;
   }  
   
@@ -113,7 +111,7 @@ public class ClassMapping implements Serializable {
       return this;
     }
     
-    public Builder withDateLastModified(LocalDateTime dateLastModified) {
+    public Builder withDateLastModified(Instant dateLastModified) {
       this._classMapping.dateLastModified = dateLastModified;
       return this;
     }
@@ -131,7 +129,7 @@ public class ClassMapping implements Serializable {
     public ClassMapping build() {
       
       if (_classMapping.dateLastModified == null) {
-        _classMapping.dateLastModified = LocalDateTime.now(ZoneId.of("UTC"));
+        _classMapping.dateLastModified = Instant.now();
       }
       
       return _classMapping;

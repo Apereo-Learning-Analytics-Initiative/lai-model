@@ -1,6 +1,6 @@
 package org.apereo.model.oneroster;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -20,8 +20,8 @@ public class LineItem {
   private Map<String, String> metadata;
   private String title;
   private String description;
-  private LocalDateTime assignDate;
-  private LocalDateTime dueDate;
+  private Instant assignDate;
+  private Instant dueDate;
   
   @JsonProperty("class")
   private Link klass;
@@ -50,11 +50,11 @@ public class LineItem {
     return description;
   }
 
-  public LocalDateTime getAssignDate() {
+  public Instant getAssignDate() {
     return assignDate;
   }
 
-  public LocalDateTime getDueDate() {
+  public Instant getDueDate() {
     return dueDate;
   }
 
@@ -169,12 +169,12 @@ public class LineItem {
       return this;
     }
     
-    public Builder withAssignDate(LocalDateTime assignDate) {
+    public Builder withAssignDate(Instant assignDate) {
       _lineItem.assignDate = assignDate;
       return this;
     }
     
-    public Builder withDueDate(LocalDateTime dueDate) {
+    public Builder withDueDate(Instant dueDate) {
       _lineItem.dueDate = dueDate;
       return this;
     }

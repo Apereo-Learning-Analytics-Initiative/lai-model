@@ -1,6 +1,6 @@
 package org.apereo.model.oneroster;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Map;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -18,7 +18,7 @@ public class Org {
   private String sourcedId;
   private Status status;
   private Map<String, String> metadata;
-  private LocalDateTime dateLastModified;
+  private Instant dateLastModified;
   private String name;
   private OrgType type;
   private String identifier;
@@ -37,7 +37,7 @@ public class Org {
     return metadata;
   }
 
-  public LocalDateTime getDateLastModified() {
+  public Instant getDateLastModified() {
     return dateLastModified;
   }
 
@@ -131,7 +131,7 @@ public class Org {
       return this;
     }
     
-    public Builder withDateLastModified(LocalDateTime dateLastModified) {
+    public Builder withDateLastModified(Instant dateLastModified) {
       _org.dateLastModified = dateLastModified;
       return this;
     }

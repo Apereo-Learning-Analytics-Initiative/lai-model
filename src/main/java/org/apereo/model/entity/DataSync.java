@@ -1,7 +1,7 @@
 package org.apereo.model.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -26,7 +26,7 @@ public class DataSync implements Serializable {
   private String id;
   private String orgId;
   private String tenantId;
-  private LocalDateTime syncDateTime;
+  private Instant syncDateTime;
   private DataSyncType syncType;
   private DataSyncStatus syncStatus;
   
@@ -44,7 +44,7 @@ public class DataSync implements Serializable {
     return tenantId;
   }
 
-  public LocalDateTime getSyncDateTime() {
+  public Instant getSyncDateTime() {
     return syncDateTime;
   }
 
@@ -134,7 +134,7 @@ public class DataSync implements Serializable {
       return this;
     }
 
-    public Builder withSyncDateTime(LocalDateTime syncDateTime) {
+    public Builder withSyncDateTime(Instant syncDateTime) {
       _dataSync.syncDateTime = syncDateTime;
       return this;
     }

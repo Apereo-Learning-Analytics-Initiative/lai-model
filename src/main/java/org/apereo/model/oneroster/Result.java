@@ -1,6 +1,6 @@
 package org.apereo.model.oneroster;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -14,12 +14,12 @@ public class Result {
 
   private String sourcedId;
   private Status status;
-  private LocalDateTime dateLastModified;
+  private Instant dateLastModified;
   private Link lineitem;
   private Link student;
   private Double score;
   private String resultstatus;
-  private LocalDateTime date;
+  private Instant date;
   private String comment;
   private Map<String, String> metadata;
 
@@ -33,7 +33,7 @@ public class Result {
     return status;
   }
 
-  public LocalDateTime getDateLastModified() {
+  public Instant getDateLastModified() {
     return dateLastModified;
   }
 
@@ -53,7 +53,7 @@ public class Result {
     return resultstatus;
   }
 
-  public LocalDateTime getDate() {
+  public Instant getDate() {
     return date;
   }
 
@@ -154,7 +154,7 @@ public class Result {
       return this;
     }
     
-    public Builder withDateLastModified(LocalDateTime dateLastModified) {
+    public Builder withDateLastModified(Instant dateLastModified) {
       _result.dateLastModified = dateLastModified;
       return this;
     }
@@ -184,7 +184,7 @@ public class Result {
       return this;
     }
     
-    public Builder withDate(LocalDateTime date) {
+    public Builder withDate(Instant date) {
       _result.date = date;
       return this;
     }

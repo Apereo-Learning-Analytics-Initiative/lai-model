@@ -1,8 +1,7 @@
 package org.apereo.model.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.Instant;
 import java.util.Map;
 
 /**
@@ -17,7 +16,7 @@ public class ModelOutput implements Serializable {
   private String userSourcedId;
   private String model;
   private Map<String, Object> results;
-  private LocalDateTime dateLastModified;
+  private Instant dateLastModified;
   private String tenantId;
   private String organizationId;
   
@@ -39,7 +38,7 @@ public class ModelOutput implements Serializable {
     return results;
   }
 
-  public LocalDateTime getDateLastModified() {
+  public Instant getDateLastModified() {
     return dateLastModified;
   }
 
@@ -125,7 +124,7 @@ public class ModelOutput implements Serializable {
       return this;
     }
     
-    public Builder withDateLastModified(LocalDateTime dateLastModified) {
+    public Builder withDateLastModified(Instant dateLastModified) {
       this._modelOutput.dateLastModified = dateLastModified;
       return this;
     }
@@ -153,7 +152,7 @@ public class ModelOutput implements Serializable {
     public ModelOutput build() {
       
       if (_modelOutput.dateLastModified == null) {
-        _modelOutput.dateLastModified = LocalDateTime.now(ZoneId.of("UTC"));
+        _modelOutput.dateLastModified = Instant.now();
       }
       
       return _modelOutput;

@@ -1,8 +1,7 @@
 package org.apereo.model.entity;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import java.time.Instant;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -22,7 +21,7 @@ public class UserMapping implements Serializable {
   private String userExternalId;
   private String tenantId;
   private String organizationId;
-  private LocalDateTime dateLastModified;
+  private Instant dateLastModified;
   
   private UserMapping() {}
 
@@ -34,7 +33,7 @@ public class UserMapping implements Serializable {
     return userExternalId;
   }
   
-  public LocalDateTime getDateLastModified() {
+  public Instant getDateLastModified() {
     return dateLastModified;
   }
 
@@ -113,7 +112,7 @@ public class UserMapping implements Serializable {
       return this;
     }
     
-    public Builder withDateLastModified(LocalDateTime dateLastModified) {
+    public Builder withDateLastModified(Instant dateLastModified) {
       this._userMapping.dateLastModified = dateLastModified;
       return this;
     }
@@ -131,7 +130,7 @@ public class UserMapping implements Serializable {
     public UserMapping build() {
       
       if (_userMapping.dateLastModified == null) {
-        _userMapping.dateLastModified = LocalDateTime.now(ZoneId.of("UTC"));
+        _userMapping.dateLastModified = Instant.now();
       }
       
       return _userMapping;

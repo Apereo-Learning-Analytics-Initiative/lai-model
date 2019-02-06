@@ -1,7 +1,7 @@
 package org.apereo.model.oneroster;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -111,7 +111,7 @@ public class AcademicSession extends BaseClass {
       return this;
     }
 
-    public Builder withDateLastModified(LocalDateTime dateLastModified) {
+    public Builder withDateLastModified(Instant dateLastModified) {
       _academicSession.dateLastModified = dateLastModified;
       return this;
     }
