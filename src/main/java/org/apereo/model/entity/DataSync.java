@@ -1,7 +1,4 @@
-/**
- * 
- */
-package unicon.matthews.entity;
+package org.apereo.model.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -11,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * @author ggilbert
- *
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
  */
 public class DataSync implements Serializable {
   

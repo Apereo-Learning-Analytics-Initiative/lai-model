@@ -1,7 +1,12 @@
-package unicon.matthews.oneroster;
+package org.apereo.model.oneroster;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+
+/**
+ * @author ggilbert
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
+ */
 @JsonDeserialize(builder = Link.Builder.class)
 public class Link {
 

@@ -1,4 +1,4 @@
-package unicon.matthews.oneroster;
+package org.apereo.model.oneroster;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +8,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+/**
+ * @author ggilbert
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
+ */
 @JsonDeserialize(builder = Course.Builder.class)
 public class Course {
   private String sourcedId;

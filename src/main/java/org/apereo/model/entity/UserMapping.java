@@ -1,7 +1,4 @@
-/**
- * 
- */
-package unicon.matthews.entity;
+package org.apereo.model.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -14,7 +11,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * @author ggilbert
- *
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
  */
 @JsonDeserialize(builder = UserMapping.Builder.class)
 public class UserMapping implements Serializable {

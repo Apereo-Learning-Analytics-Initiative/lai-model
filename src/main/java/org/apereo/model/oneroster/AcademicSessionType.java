@@ -1,4 +1,4 @@
-package unicon.matthews.oneroster;
+package org.apereo.model.oneroster;
 
 /**
  * @author stalele

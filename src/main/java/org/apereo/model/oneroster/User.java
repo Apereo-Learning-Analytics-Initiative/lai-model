@@ -1,7 +1,4 @@
-/**
- * 
- */
-package unicon.matthews.oneroster;
+package org.apereo.model.oneroster;
 
 import java.util.Map;
 
@@ -12,7 +9,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * @author ggilbert
- *
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
  */
 @JsonDeserialize(builder = User.Builder.class)
 public final class User {

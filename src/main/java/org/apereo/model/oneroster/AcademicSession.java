@@ -1,4 +1,4 @@
-package unicon.matthews.oneroster;
+package org.apereo.model.oneroster;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -6,6 +6,10 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+/**
+ * @author ggilbert
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
+ */
 @JsonDeserialize(builder = AcademicSession.Builder.class)
 public class AcademicSession extends BaseClass {
 

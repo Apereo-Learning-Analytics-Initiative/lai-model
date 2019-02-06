@@ -1,46 +1,48 @@
-/**
- * 
- */
-package unicon.matthews.entity;
+package org.apereo.model.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.util.Map;
 
 /**
  * @author ggilbert
- *
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
  */
-@JsonDeserialize(builder = ClassMapping.Builder.class)
-public class ClassMapping implements Serializable {
-
+public class ModelOutput implements Serializable {
+  
   private static final long serialVersionUID = 1L;
   
   private String classSourcedId;
-  private String classExternalId;
+  private String userSourcedId;
+  private String model;
+  private Map<String, Object> results;
   private LocalDateTime dateLastModified;
   private String tenantId;
   private String organizationId;
   
-  private ClassMapping() {}
+  private ModelOutput() {}
 
   public String getClassSourcedId() {
     return classSourcedId;
   }
 
-  public String getClassExternalId() {
-    return classExternalId;
+  public String getUserSourcedId() {
+    return userSourcedId;
   }
-  
+
+  public String getModel() {
+    return model;
+  }
+
+  public Map<String, Object> getResults() {
+    return results;
+  }
+
   public LocalDateTime getDateLastModified() {
     return dateLastModified;
-  }  
-  
+  }
+
   public String getTenantId() {
     return tenantId;
   }
@@ -48,21 +50,18 @@ public class ClassMapping implements Serializable {
   public String getOrganizationId() {
     return organizationId;
   }
-  
-  @Override
-  public String toString() {
-    return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
-  }
 
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((classExternalId == null) ? 0 : classExternalId.hashCode());
     result = prime * result + ((classSourcedId == null) ? 0 : classSourcedId.hashCode());
     result = prime * result + ((dateLastModified == null) ? 0 : dateLastModified.hashCode());
+    result = prime * result + ((model == null) ? 0 : model.hashCode());
     result = prime * result + ((organizationId == null) ? 0 : organizationId.hashCode());
+    result = prime * result + ((results == null) ? 0 : results.hashCode());
     result = prime * result + ((tenantId == null) ? 0 : tenantId.hashCode());
+    result = prime * result + ((userSourcedId == null) ? 0 : userSourcedId.hashCode());
     return result;
   }
 
@@ -74,12 +73,7 @@ public class ClassMapping implements Serializable {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    ClassMapping other = (ClassMapping) obj;
-    if (classExternalId == null) {
-      if (other.classExternalId != null)
-        return false;
-    } else if (!classExternalId.equals(other.classExternalId))
-      return false;
+    ModelOutput other = (ModelOutput) obj;
     if (classSourcedId == null) {
       if (other.classSourcedId != null)
         return false;
@@ -90,55 +84,81 @@ public class ClassMapping implements Serializable {
         return false;
     } else if (!dateLastModified.equals(other.dateLastModified))
       return false;
+    if (model == null) {
+      if (other.model != null)
+        return false;
+    } else if (!model.equals(other.model))
+      return false;
     if (organizationId == null) {
       if (other.organizationId != null)
         return false;
     } else if (!organizationId.equals(other.organizationId))
+      return false;
+    if (results == null) {
+      if (other.results != null)
+        return false;
+    } else if (!results.equals(other.results))
       return false;
     if (tenantId == null) {
       if (other.tenantId != null)
         return false;
     } else if (!tenantId.equals(other.tenantId))
       return false;
+    if (userSourcedId == null) {
+      if (other.userSourcedId != null)
+        return false;
+    } else if (!userSourcedId.equals(other.userSourcedId))
+      return false;
     return true;
   }
-
+  
   public static class Builder {
-    private ClassMapping _classMapping = new ClassMapping();
+    private ModelOutput _modelOutput = new ModelOutput();
     
     public Builder withClassSourcedId(String classSourcedId) {
-      this._classMapping.classSourcedId = classSourcedId;
+      this._modelOutput.classSourcedId = classSourcedId;
       return this;
     }
     
-    public Builder withClassExternalId(String classExternalId) {
-      this._classMapping.classExternalId = classExternalId;
+    public Builder withUserSourcedId(String userSourcedId) {
+      this._modelOutput.userSourcedId = userSourcedId;
       return this;
     }
     
     public Builder withDateLastModified(LocalDateTime dateLastModified) {
-      this._classMapping.dateLastModified = dateLastModified;
+      this._modelOutput.dateLastModified = dateLastModified;
       return this;
     }
     
     public Builder withTenantId(String tenantId) {
-      this._classMapping.tenantId = tenantId;
+      this._modelOutput.tenantId = tenantId;
       return this;
     }
     
     public Builder withOrganizationId(String organizationId) {
-      this._classMapping.organizationId = organizationId;
+      this._modelOutput.organizationId = organizationId;
       return this;
     }
     
-    public ClassMapping build() {
+    public Builder withModel(String model) {
+      this._modelOutput.model = model;
+      return this;
+    }
+    
+    public Builder withResults(Map<String,Object> results) {
+      this._modelOutput.results = results;
+      return this;
+    }
+    
+    public ModelOutput build() {
       
-      if (_classMapping.dateLastModified == null) {
-        _classMapping.dateLastModified = LocalDateTime.now(ZoneId.of("UTC"));
+      if (_modelOutput.dateLastModified == null) {
+        _modelOutput.dateLastModified = LocalDateTime.now(ZoneId.of("UTC"));
       }
       
-      return _classMapping;
+      return _modelOutput;
     }
   }
+
 
 }

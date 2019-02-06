@@ -1,8 +1,12 @@
-package unicon.matthews.oneroster;
+package org.apereo.model.oneroster;
 
 import java.time.LocalDateTime;
 import java.util.Map;
 
+/**
+ * @author ggilbert
+ * @author xchopin <xavier.chopin@univ-lorraine.fr>
+ */
 abstract class BaseClass {
 
   protected String sourcedId;
