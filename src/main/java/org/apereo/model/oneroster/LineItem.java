@@ -17,11 +17,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 public class LineItem {
   private String sourcedId;
   private Status status;
+  private Instant dateLastModified;
   private Map<String, String> metadata;
-  private String title;
-  private String description;
-  private Instant assignDate;
-  private Instant dueDate;
+  private String title, description;
+  private Instant assignDate, dueDate;
+  private double resultValueMin, resultValueMax;
   
   @JsonProperty("class")
   private Link klass;
@@ -67,78 +67,63 @@ public class LineItem {
   }
 
   @Override
-  public String toString() {
-    return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    LineItem lineItem = (LineItem) o;
+
+    if (Double.compare(lineItem.resultValueMin, resultValueMin) != 0) return false;
+    if (Double.compare(lineItem.resultValueMax, resultValueMax) != 0) return false;
+    if (sourcedId != null ? !sourcedId.equals(lineItem.sourcedId) : lineItem.sourcedId != null) return false;
+    if (status != lineItem.status) return false;
+    if (dateLastModified != null ? !dateLastModified.equals(lineItem.dateLastModified) : lineItem.dateLastModified != null)
+      return false;
+    if (metadata != null ? !metadata.equals(lineItem.metadata) : lineItem.metadata != null) return false;
+    if (title != null ? !title.equals(lineItem.title) : lineItem.title != null) return false;
+    if (description != null ? !description.equals(lineItem.description) : lineItem.description != null) return false;
+    if (assignDate != null ? !assignDate.equals(lineItem.assignDate) : lineItem.assignDate != null) return false;
+    if (dueDate != null ? !dueDate.equals(lineItem.dueDate) : lineItem.dueDate != null) return false;
+    if (klass != null ? !klass.equals(lineItem.klass) : lineItem.klass != null) return false;
+    return category != null ? category.equals(lineItem.category) : lineItem.category == null;
   }
 
   @Override
   public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((assignDate == null) ? 0 : assignDate.hashCode());
-    result = prime * result + ((category == null) ? 0 : category.hashCode());
-    result = prime * result + ((description == null) ? 0 : description.hashCode());
-    result = prime * result + ((dueDate == null) ? 0 : dueDate.hashCode());
-    result = prime * result + ((klass == null) ? 0 : klass.hashCode());
-    result = prime * result + ((metadata == null) ? 0 : metadata.hashCode());
-    result = prime * result + ((sourcedId == null) ? 0 : sourcedId.hashCode());
-    result = prime * result + ((status == null) ? 0 : status.hashCode());
-    result = prime * result + ((title == null) ? 0 : title.hashCode());
+    int result;
+    long temp;
+    result = sourcedId != null ? sourcedId.hashCode() : 0;
+    result = 31 * result + (status != null ? status.hashCode() : 0);
+    result = 31 * result + (dateLastModified != null ? dateLastModified.hashCode() : 0);
+    result = 31 * result + (metadata != null ? metadata.hashCode() : 0);
+    result = 31 * result + (title != null ? title.hashCode() : 0);
+    result = 31 * result + (description != null ? description.hashCode() : 0);
+    result = 31 * result + (assignDate != null ? assignDate.hashCode() : 0);
+    result = 31 * result + (dueDate != null ? dueDate.hashCode() : 0);
+    temp = Double.doubleToLongBits(resultValueMin);
+    result = 31 * result + (int) (temp ^ (temp >>> 32));
+    temp = Double.doubleToLongBits(resultValueMax);
+    result = 31 * result + (int) (temp ^ (temp >>> 32));
+    result = 31 * result + (klass != null ? klass.hashCode() : 0);
+    result = 31 * result + (category != null ? category.hashCode() : 0);
     return result;
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    LineItem other = (LineItem) obj;
-    if (assignDate == null) {
-      if (other.assignDate != null)
-        return false;
-    } else if (!assignDate.equals(other.assignDate))
-      return false;
-    if (category == null) {
-      if (other.category != null)
-        return false;
-    } else if (!category.equals(other.category))
-      return false;
-    if (description == null) {
-      if (other.description != null)
-        return false;
-    } else if (!description.equals(other.description))
-      return false;
-    if (dueDate == null) {
-      if (other.dueDate != null)
-        return false;
-    } else if (!dueDate.equals(other.dueDate))
-      return false;
-    if (klass == null) {
-      if (other.klass != null)
-        return false;
-    } else if (!klass.equals(other.klass))
-      return false;
-    if (metadata == null) {
-      if (other.metadata != null)
-        return false;
-    } else if (!metadata.equals(other.metadata))
-      return false;
-    if (sourcedId == null) {
-      if (other.sourcedId != null)
-        return false;
-    } else if (!sourcedId.equals(other.sourcedId))
-      return false;
-    if (status != other.status)
-      return false;
-    if (title == null) {
-      if (other.title != null)
-        return false;
-    } else if (!title.equals(other.title))
-      return false;
-    return true;
+  public String toString() {
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
+  }
+
+  public double getResultValueMin() {
+    return resultValueMin;
+  }
+
+  public double getResultValueMax() {
+    return resultValueMax;
+  }
+
+  public Instant getDateLastModified() {
+    return dateLastModified;
   }
 
   public static class Builder {
@@ -188,7 +173,22 @@ public class LineItem {
       _lineItem.klass = klass;
       return this;
     }
-    
+
+    public Builder dateLastModified(Instant date) {
+      _lineItem.dateLastModified = date;
+      return this;
+    }
+
+    public Builder withResultValueMin(Double value) {
+      _lineItem.resultValueMin = value;
+      return this;
+    }
+
+    public Builder withResultValueMax(Double value) {
+      _lineItem.resultValueMax = value;
+      return this;
+    }
+
     public LineItem build() {
       if (_lineItem.klass == null) {
         throw new IllegalStateException(_lineItem.toString());
