@@ -18,7 +18,7 @@ public class Result {
   private Link lineitem;
   private Link student;
   private Double score;
-  private String resultstatus;
+  private String resultStatus;
   private Instant date;
   private String comment;
   private Map<String, String> metadata;
@@ -49,8 +49,8 @@ public class Result {
     return score;
   }
 
-  public String getResultstatus() {
-    return resultstatus;
+  public String getResultStatus() {
+    return resultStatus;
   }
 
   public Instant getDate() {
@@ -74,7 +74,7 @@ public class Result {
     result = prime * result + ((dateLastModified == null) ? 0 : dateLastModified.hashCode());
     result = prime * result + ((lineitem == null) ? 0 : lineitem.hashCode());
     result = prime * result + ((metadata == null) ? 0 : metadata.hashCode());
-    result = prime * result + ((resultstatus == null) ? 0 : resultstatus.hashCode());
+    result = prime * result + ((resultStatus == null) ? 0 : resultStatus.hashCode());
     result = prime * result + ((score == null) ? 0 : score.hashCode());
     result = prime * result + ((sourcedId == null) ? 0 : sourcedId.hashCode());
     result = prime * result + ((status == null) ? 0 : status.hashCode());
@@ -116,10 +116,10 @@ public class Result {
         return false;
     } else if (!metadata.equals(other.metadata))
       return false;
-    if (resultstatus == null) {
-      if (other.resultstatus != null)
+    if (resultStatus == null) {
+      if (other.resultStatus != null)
         return false;
-    } else if (!resultstatus.equals(other.resultstatus))
+    } else if (!resultStatus.equals(other.resultStatus))
       return false;
     if (score == null) {
       if (other.score != null)
@@ -179,8 +179,8 @@ public class Result {
       return this;
     }
     
-    public Builder withResultstatus(String resultstatus) {
-      _result.resultstatus = resultstatus;
+    public Builder withResultStatus(String resultStatus) {
+      _result.resultStatus = resultStatus;
       return this;
     }
     
