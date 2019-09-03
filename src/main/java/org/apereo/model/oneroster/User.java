@@ -1,14 +1,13 @@
 package org.apereo.model.oneroster;
 
-import java.time.Instant;
-import java.util.Map;
-
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import java.time.Instant;
+import java.util.Map;
 
 /**
  * @author ggilbert
@@ -163,8 +162,8 @@ public final class User {
   }
 
   public static class Builder {
-    private User _user = new User()
-            ;
+    private User _user = new User();
+
     public User withSourcedId(String sourcedId) {
       _user.sourcedId = sourcedId;
       return _user;
