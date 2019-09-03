@@ -8,5 +8,5 @@ This repository contains the OneRoster models.
 ```bash
 mvn package
 cd target/
-mvn install:install-file -DgroupId=org.apereo.model -DartifactId=lai-model -Dversion=1.0.9 -Dfile=lai-model-1.0.9.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
+mvn install:install-file -DgroupId=org.apereo.model -DartifactId=lai-model -Dversion=1.1.0 -Dfile=lai-model-1.1.0.jar -Dpackaging=jar -DgeneratePom=true -DlocalRepositoryPath=. -DcreateChecksum=true
 ```
