@@ -1,6 +1,8 @@
 package org.apereo.model.oneroster;
 
+import java.time.Instant;
 import java.util.Map;
+import java.util.Objects;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -21,23 +23,33 @@ public final class Enrollment {
   private Role role;
   private boolean primary;
   private Link user;
-  
-  private Enrollment() {}
-  
+  private Instant lastModified;
+  private Instant beginDate;
+  private Instant endDate;
   @JsonProperty("class")
   private Link klass;
+  
+  private Enrollment() {}
+
 
   public String getSourcedId() {
     return sourcedId;
+  }
+
+  public Enrollment setSourcedId(String sourcedId) {
+    this.sourcedId = sourcedId;
+    return this;
   }
 
   public Status getStatus() {
     return status;
   }
 
+
   public Map<String, String> getMetadata() {
     return metadata;
   }
+
 
   public Role getRole() {
     return role;
@@ -51,62 +63,49 @@ public final class Enrollment {
     return user;
   }
 
+  public Instant getLastModified() {
+    return lastModified;
+  }
+
+
+  public Instant getBeginDate() {
+    return beginDate;
+  }
+
+
+  public Instant getEndDate() {
+    return endDate;
+  }
+
+
   public Link getKlass() {
     return klass;
   }
 
+
+
   @Override
-  public int hashCode() {
-    final int prime = 31;
-    int result = 1;
-    result = prime * result + ((klass == null) ? 0 : klass.hashCode());
-    result = prime * result + ((metadata == null) ? 0 : metadata.hashCode());
-    result = prime * result + (primary ? 1231 : 1237);
-    result = prime * result + ((role == null) ? 0 : role.hashCode());
-    result = prime * result + ((sourcedId == null) ? 0 : sourcedId.hashCode());
-    result = prime * result + ((status == null) ? 0 : status.hashCode());
-    result = prime * result + ((user == null) ? 0 : user.hashCode());
-    return result;
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Enrollment that = (Enrollment) o;
+    return primary == that.primary &&
+            Objects.equals(sourcedId, that.sourcedId) &&
+            status == that.status &&
+            Objects.equals(metadata, that.metadata) &&
+            role == that.role &&
+            Objects.equals(user, that.user) &&
+            Objects.equals(lastModified, that.lastModified) &&
+            Objects.equals(beginDate, that.beginDate) &&
+            Objects.equals(endDate, that.endDate) &&
+            Objects.equals(klass, that.klass);
   }
 
   @Override
-  public boolean equals(Object obj) {
-    if (this == obj)
-      return true;
-    if (obj == null)
-      return false;
-    if (getClass() != obj.getClass())
-      return false;
-    Enrollment other = (Enrollment) obj;
-    if (klass == null) {
-      if (other.klass != null)
-        return false;
-    } else if (!klass.equals(other.klass))
-      return false;
-    if (metadata == null) {
-      if (other.metadata != null)
-        return false;
-    } else if (!metadata.equals(other.metadata))
-      return false;
-    if (primary != other.primary)
-      return false;
-    if (role != other.role)
-      return false;
-    if (sourcedId == null) {
-      if (other.sourcedId != null)
-        return false;
-    } else if (!sourcedId.equals(other.sourcedId))
-      return false;
-    if (status != other.status)
-      return false;
-    if (user == null) {
-      if (other.user != null)
-        return false;
-    } else if (!user.equals(other.user))
-      return false;
-    return true;
+  public int hashCode() {
+    return Objects.hash(sourcedId, status, metadata, role, primary, user, lastModified, beginDate, endDate, klass);
   }
-  
+
   @Override
   public String toString() {
     return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);
@@ -148,6 +147,21 @@ public final class Enrollment {
     @JsonProperty("class")
     public Builder withKlass(Link klass) {
       _enrollment.klass = klass;
+      return this;
+    }
+
+    public Builder withLastModified(Instant lastModified) {
+      _enrollment.lastModified = lastModified;
+      return this;
+    }
+
+    public Builder withBeginDate(Instant beginDate) {
+      _enrollment.beginDate = beginDate;
+      return this;
+    }
+
+    public Builder withEndDate(Instant endDate) {
+      _enrollment.endDate = endDate;
       return this;
     }
     
