@@ -164,89 +164,89 @@ public final class User {
   public static class Builder {
     private User _user = new User();
 
-    public User withSourcedId(String sourcedId) {
+    public Builder withSourcedId(String sourcedId) {
       _user.sourcedId = sourcedId;
-      return _user;
+      return this;
     }
 
-    public User withStatus(Status status) {
+    public Builder withStatus(Status status) {
       _user.status = status;
-      return _user;
+      return this;
     }
 
-    public User withDateLastModified(Instant dateLastModified) {
+    public Builder withDateLastModified(Instant dateLastModified) {
       _user.dateLastModified = dateLastModified;
-      return _user;
+      return this;
     }
 
-    public User withMetadata(Map<String, String> metadata) {
+    public Builder withMetadata(Map<String, String> metadata) {
       _user.metadata = metadata;
-      return _user;
+      return this;
     }
 
-    public User withUserIds(UserId[] userIds) {
+    public Builder withUserIds(UserId[] userIds) {
       _user.userIds = userIds;
-      return _user;
+      return this;
     }
 
-    public User withEnabledUser(boolean enabledUser) {
+    public Builder withEnabledUser(boolean enabledUser) {
       _user.enabledUser = enabledUser;
-      return _user;
+      return this;
     }
 
-    public User withUsername(String username) {
+    public Builder withUsername(String username) {
       _user.username = username;
-      return _user;
+      return this;
     }
 
-    public User withGivenName(String givenName) {
+    public Builder withGivenName(String givenName) {
       _user.givenName = givenName;
-      return _user;
+      return this;
     }
 
-    public User withFamilyName(String familyName) {
+    public Builder withFamilyName(String familyName) {
       _user.familyName = familyName;
-      return _user;
+      return this;
     }
 
-    public User withMiddleName(String middleName) {
+    public Builder withMiddleName(String middleName) {
       _user.middleName = middleName;
-      return _user;
+      return this;
     }
 
-    public User withRole(Role role) {
+    public Builder withRole(Role role) {
       _user.role = role;
-      return _user;
+      return this;
     }
 
-    public User withIdentifier(String identifier) {
+    public Builder withIdentifier(String identifier) {
       _user.identifier = identifier;
-      return _user;
+      return this;
     }
 
-    public User withEmail(String email) {
+    public Builder withEmail(String email) {
       _user.email = email;
-      return _user;
+      return this;
     }
 
-    public User withSms(String sms) {
+    public Builder withSms(String sms) {
       _user.sms = sms;
-      return _user;
+      return this;
     }
 
-    public User withPhone(String phone) {
+    public Builder withPhone(String phone) {
       _user.phone = phone;
-      return _user;
+      return this;
     }
 
-    public User withGrades(String[] grades) {
+    public Builder withGrades(String[] grades) {
       _user.grades = grades;
-      return _user;
+      return this;
     }
 
-    public User withPassword(String password) {
+    public Builder withPassword(String password) {
       _user.password = password;
-      return _user;
+      return this;
     }
 
     public User build() {
