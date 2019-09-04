@@ -23,7 +23,7 @@ public final class Enrollment {
   private Role role;
   private boolean primary;
   private Link user;
-  private Instant lastModified;
+  private Instant dateLastModified;
   private Instant beginDate;
   private Instant endDate;
   @JsonProperty("class")
@@ -63,8 +63,8 @@ public final class Enrollment {
     return user;
   }
 
-  public Instant getLastModified() {
-    return lastModified;
+  public Instant getDateLastModified() {
+    return dateLastModified;
   }
 
 
@@ -95,7 +95,7 @@ public final class Enrollment {
             Objects.equals(metadata, that.metadata) &&
             role == that.role &&
             Objects.equals(user, that.user) &&
-            Objects.equals(lastModified, that.lastModified) &&
+            Objects.equals(dateLastModified, that.dateLastModified) &&
             Objects.equals(beginDate, that.beginDate) &&
             Objects.equals(endDate, that.endDate) &&
             Objects.equals(klass, that.klass);
@@ -103,7 +103,7 @@ public final class Enrollment {
 
   @Override
   public int hashCode() {
-    return Objects.hash(sourcedId, status, metadata, role, primary, user, lastModified, beginDate, endDate, klass);
+    return Objects.hash(sourcedId, status, metadata, role, primary, user, dateLastModified, beginDate, endDate, klass);
   }
 
   @Override
@@ -150,8 +150,8 @@ public final class Enrollment {
       return this;
     }
 
-    public Builder withLastModified(Instant lastModified) {
-      _enrollment.lastModified = lastModified;
+    public Builder withDateLastModified(Instant lastModified) {
+      _enrollment.dateLastModified = lastModified;
       return this;
     }
 
