@@ -2,9 +2,14 @@ package org.apereo.model.entity;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * @author ggilbert
@@ -26,7 +31,10 @@ public class DataSync implements Serializable {
   private String id;
   private String orgId;
   private String tenantId;
+  
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern ="yyyy-MM-dd'T'HH:mm:ss.SSS", timezone = "UTC")
   private Instant syncDateTime;
+  
   private DataSyncType syncType;
   private DataSyncStatus syncStatus;
   
@@ -136,6 +144,14 @@ public class DataSync implements Serializable {
 
     public Builder withSyncDateTime(Instant syncDateTime) {
       _dataSync.syncDateTime = syncDateTime;
+      return this;
+    }
+    
+    public Builder withSyncDateTime(String syncDateTime) {
+    	LocalDate localDate = LocalDate.parse(syncDateTime);
+    	LocalDateTime localDateTime = localDate.atStartOfDay();
+    	Instant instant = localDateTime.toInstant(ZoneOffset.UTC);
+      _dataSync.syncDateTime = instant;
       return this;
     }
     

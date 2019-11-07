@@ -5,7 +5,7 @@
 
   <groupId>apereo</groupId>
   <artifactId>lai-model</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
     <build>
         <plugins>
             <plugin>
@@ -52,4 +52,5 @@
     </dependency>
   </dependencies>
 
+  <description>For use with apereo LRW_Suite (or Shuhari) of products, including OpenLRW, OpenDashboard and data-loader-library</description>
 </project>
